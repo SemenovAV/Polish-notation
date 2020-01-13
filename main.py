@@ -1,9 +1,15 @@
-from lib.polishNotation import PolishNotation
-from config.config import config
-from function.parse import parse
+from lib.basePN import pn
 
-pn = PolishNotation(config, parse)
-print(pn('7 22 2'))
-print(pn('- 43 50'))
-print(pn('* 5 4'))
-print(pn('/ 70 0'))
+state = True
+while state:
+    try:
+        value = input('Введите знак операции и два числа через пробел:')
+        if value == 'exit':
+            state = False
+            break
+        elif value == 'help':
+            print(pn.__doc__)
+        else:
+            print(pn(value))
+    except Exception as e:
+        print(e)

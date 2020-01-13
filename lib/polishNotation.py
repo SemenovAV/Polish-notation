@@ -6,23 +6,24 @@ class PolishNotation:
 
     def __call__(self, string):
         data = self.parse(string)
-        if data[0] in dir(self):
+        if len(data) == 3:
+            assert data[0] in dir(self), f'Ошибка: "{data[0]}" - операция не поддерживается.'
             try:
                 first = int(data[1])
             except ValueError:
-                print(f'Ошибка: {data[1]} - не число')
+                raise ValueError(f'Ошибка: {data[2]} - не число')
             else:
                 try:
                     second = int(data[2])
                 except ValueError as e:
-                    print(f'Ошибка: {data[2]} - не число')
+                    raise ValueError(f'Ошибка: {data[2]} - не число')
                 else:
                     try:
                         result = getattr(self, data[0])(first, second)
                     except Exception as e:
-                        return f'Ошибка: {e}'
+                        raise Exception(f'Ошибка: {e}')
 
                     else:
                         return result
         else:
-            return f'Ошибка: "{data[0]}" - операция не поддерживается.'
+            raise ValueError(f'Ошибка: Недостаточное количество аргументов.')
