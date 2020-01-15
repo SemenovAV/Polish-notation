@@ -12,4 +12,4 @@ while state:
         else:
             print(pn(value))
     except Exception as e:
-        print(e)
+        print(f'Ошибка: {e}')
