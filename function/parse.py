@@ -1,2 +1,2 @@
 def parse(string):
-    return string.split(' ')
+    return string.strip().split(' ')

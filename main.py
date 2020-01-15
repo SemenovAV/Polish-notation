@@ -4,10 +4,10 @@ state = True
 while state:
     try:
         value = input('Введите знак операции и два числа через пробел:')
-        if value == 'exit':
+        if value.strip() == 'exit':
             state = False
             break
-        elif value == 'help':
+        elif value.strip() == 'help':
             print(pn.__doc__)
         else:
             print(pn(value))

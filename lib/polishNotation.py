@@ -26,5 +26,3 @@ class PolishNotation:
             raise ValueError('На ноль делить нельзя')
         else:
             return f'Результат операции: {result}'
-
-
